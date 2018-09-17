@@ -35,4 +35,4 @@ router.route = (req, res) => {
       res.write('Request failed parsing', req.parsed.pathname);
       res.end();
     });
-}
+};
