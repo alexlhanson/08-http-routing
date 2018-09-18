@@ -15,8 +15,8 @@ storage.get = id => {
       if (data){
         let obj = JSON.parse(data.toString());
         resolve(obj);
-      } else {reject(`${id} not found`)
-      };
+      } else {reject(`${id} not found`);
+      }
     });
   });
 };
@@ -29,11 +29,24 @@ storage.save = data => {
 
     let file = `${databaseDir}/${data.id}.json`;
     let text = JSON.stringify(data);
-
     fs.writeFile(file, text, (err => {
       if(err) {reject (err);}
       resolve(data);
     }));
+  });
+};
+
+storage.delete = id => {
+  return new Promise((resolve, reject) => {
+    if (!id){
+      reject(`${id} not found`);
+    }
+
+    let file = `${databaseDir}/${id}.json`;
+    fs.unlink(file, (err, res) => {
+      if (err) reject (err);
+      resolve(`resource: ${id} has been deleted`);
+    });
   });
 };
 

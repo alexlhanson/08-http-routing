@@ -13,3 +13,5 @@ switch(process.env.STORAGE){
     dataStorageModule = memory;
     break;
 }
+
+module.exports = dataStorageModule;

@@ -18,6 +18,7 @@ methods.forEach(method => {
 });
 
 router.route = (req, res) => {
+  console.log('hi');
   return parser(req)
     .then(req => {
       let handler = router.routes[req.method][req.parsed.pathname];
@@ -25,7 +26,7 @@ router.route = (req, res) => {
       if(handler){
         return handler(req, res);
       }else{
-        res.status = 404;
+        res.statusCode = 404;
         res.statusMessage = 'Error: resource not found';
         res.write('Resource not found, buddy boy');
         res.end();
@@ -33,7 +34,7 @@ router.route = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status = 500;
+      res.statusCode = 500;
       res.statusMessage = 'Error: parsing request';
       res.write('Request failed parsing', req.parsed.pathname);
       res.end();

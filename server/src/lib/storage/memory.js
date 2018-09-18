@@ -24,3 +24,14 @@ storage.save = data => {
   });
 
 };
+
+storage.delete = id => {
+
+  return new Promise((resolve, reject) => {
+    if (!database[id]) {reject(`${id} not found`);} 
+    else {  
+      delete database[id];
+      resolve(`resource: ${id} has been deleted`);
+    }
+  });
+};

@@ -1,7 +1,7 @@
 'use strict';
 
 const uuid = require('uuid/v1');
-const storage = require(`..lib/storage/data-store.js`);
+const storage = require(`../lib/storage/memory.js`);
 
 class Notes {
   constructor(title, content){
@@ -14,6 +14,12 @@ class Notes {
   save() {
     return storage.save(this);
   }
+
+  get(id) {
+    return storage.get(id);
+  }
+
+
 }
 
 module.exports = Notes;
