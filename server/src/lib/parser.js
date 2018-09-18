@@ -7,7 +7,7 @@ const queryString = require('querystring');
 module.exports = (req) => {
 
   return new Promise( (resolve, reject) => {
-
+    console.log(req);
     if( !(req || req.url) ) { reject('Invalid Request Object. Cannot Parse'); }
 
     // req.url = http://localhost:3000/api/v1/notes?id=12345
@@ -42,7 +42,11 @@ module.exports = (req) => {
         req.body = JSON.parse(text);
         resolve(req);
       }
-      catch(err) { reject(err); }
+      catch(err) { 
+        req.body = '';
+        resolve(req);
+        // reject(err); 
+      }
 
     });
 

@@ -25,13 +25,16 @@ router.route = (req, res) => {
       if(handler){
         return handler(req, res);
       }else{
-        //send 404
+        res.status = 404;
+        res.statusMessage = 'Error: resource not found';
+        res.write('Resource not found, buddy boy');
+        res.end();
       }
     })
     .catch(err => {
       console.error(err);
       res.status = 500;
-      res.statusMessage = 'Error while parsing request';
+      res.statusMessage = 'Error: parsing request';
       res.write('Request failed parsing', req.parsed.pathname);
       res.end();
     });
