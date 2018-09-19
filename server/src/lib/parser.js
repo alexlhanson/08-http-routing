@@ -12,6 +12,7 @@ module.exports = (req) => {
 
     // req.url = http://localhost:3000/api/v1/notes?id=12345
     req.parsed = url.parse(req.url);
+    console.info(req.parsed);
     /*
         req.parsed = {
           pathname: '/api/vi/notes',

@@ -2,6 +2,7 @@
 const router = require('../../../src/lib/router.js');
 const api = require('../../../src/api/api.js');
 const request = require('supertest');
+const storage = require('../../../src/lib/storage/memory');
 
 describe('Post request API tests', () => {
   let req = {
@@ -18,7 +19,7 @@ describe('Post request API tests', () => {
     request('http://localhost:3000')
       .post('/api/v1/notes')
       .send(req.body)
-      .expect(200, req.body, done);
+      .expect(200, req.body.title, done);
   });
 
   // test('should show given a valid post request it will return a 404 status', (done) => { 

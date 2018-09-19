@@ -27,7 +27,6 @@ router.post('/api/v1/notes', (req, res) => {
     res.end();
   } else {
     let record = new Notes(req.body.title, req.body.content);
-    console.log(record);
     record.save()
       .then(data => sendJSON(res, data))
       .catch(err => serverError(res, err));

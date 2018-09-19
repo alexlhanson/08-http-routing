@@ -1,7 +1,7 @@
 'use strict';
 
 const storage = module.exports = {};
-const databaseDir = `${__dirname}/../../data`;
+const databaseDir = `${__dirname}/data`;
 const fs = require('fs');
 
 

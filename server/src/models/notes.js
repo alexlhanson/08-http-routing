@@ -1,7 +1,7 @@
 'use strict';
 
 const uuid = require('uuid/v1');
-const storage = require(`../lib/storage/memory.js`);
+const storage = require(`../lib/storage/data-store.js`);
 
 class Notes {
   constructor(title, content){
