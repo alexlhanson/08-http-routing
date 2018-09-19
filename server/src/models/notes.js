@@ -6,7 +6,7 @@ const storage = require(`../lib/storage/data-store.js`);
 class Notes {
   constructor(title, content){
     this.id = uuid();
-    this.createdOn = new Date();
+    this.createdOn = this.lastUpdated = new Date();
     this.title = title;
     this.content = content;
   }
@@ -15,10 +15,13 @@ class Notes {
     return storage.save(this);
   }
 
-  get(id) {
+  static get(id) {
     return storage.get(id);
   }
 
+  static delete(id){
+    return storage.delete(id);
+  }
 
 }
 

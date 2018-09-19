@@ -38,8 +38,8 @@ router.route = (req, res) => {
     .catch(err => {
       console.error(err);
       res.statusCode = 500;
-      res.statusMessage = 'Error: parsing request';
-      res.write('Request failed parsing', req.parsed.pathname);
+      res.statusMessage = 'Error: internal service error';
+      res.write('Internal service error', req.parsed.pathname);
       res.end();
     });
 };

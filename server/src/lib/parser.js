@@ -27,6 +27,9 @@ module.exports = (req) => {
           name:'John'
         }
        */
+    if (req.query.id){
+      req.parsed.pathname += '/:id';
+    }
 
     if(! req.method.match(/POST|PUT|PATCH/) ) {
       resolve(req);

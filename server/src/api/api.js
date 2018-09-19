@@ -35,16 +35,13 @@ router.post('/api/v1/notes', (req, res) => {
 
 
 router.get('/api/v1/notes/:id', (req, res) => {
-  if (typeof req.body !== 'object') {
-    res.statusCode = '404';
-    res.write(`TypeError: body type not JSON string`);
-    res.end();
-  } else if (!req.parse.query.id) {
+
+  if (!req.query.id) {
     res.statusCode = '404';
     res.write(`TypeError: cannot get resource of blank id`);
     res.end();
   } else {
-    Notes.get(req.parse.query.id)
+    Notes.get(req.query.id)
       .then(data => sendJSON(res, data))
       .catch(err => serverError(res, err));
   }
@@ -56,16 +53,13 @@ router.get('/api/v1/notes/:id', (req, res) => {
 // });
 
 router.delete('/api/v1/notes/:id', (req, res) => {
-  if (typeof (JSON.parse(req.body)) !== 'object') {
-    res.statusCode = '404';
-    res.write(`TypeError: body type not JSON string`);
-    res.end();
-  } else if (!req.parse.query.id) {
+
+  if (!req.query.id) {
     res.statusCode = '404';
     res.write(`TypeError: cannot delete resource of blank id`);
     res.end();
   } else {
-    Notes.delete(req.parse.query.id)
+    Notes.delete(req.query.id)
       .then(res => {
         res.statusCode = '200';
         res.statusMessage = 'OK';
