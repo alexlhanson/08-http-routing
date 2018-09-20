@@ -7,10 +7,12 @@ describe('Router', () => {
     router.get('/', () => true);
     router.put('/', () => true);
     router.post('/', () => true);
+    router.delete('/', () => true);
 
     expect(router.routes.GET['/']).toBeDefined();
     expect(router.routes.PUT['/']).toBeDefined();
     expect(router.routes.POST['/']).toBeDefined();
+    expect(router.routes.DELETE['/']).toBeDefined();
 
   });
 
