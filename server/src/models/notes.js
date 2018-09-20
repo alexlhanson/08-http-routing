@@ -19,8 +19,9 @@ class Notes {
     return storage.get(id);
   }
 
-  static delete(id){
-    return storage.delete(id);
+  static delete(res, id){
+    console.log(id);
+    return storage.delete(res, id);
   }
 
 }

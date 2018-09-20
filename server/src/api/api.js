@@ -59,12 +59,12 @@ router.delete('/api/v1/notes/:id', (req, res) => {
     res.write(`TypeError: cannot delete resource of blank id`);
     res.end();
   } else {
-    Notes.delete(req.query.id)
+    Notes.delete(res, req.query.id)
       .then(res => {
         res.statusCode = '200';
-        res.statusMessage = 'OK';
-        res.setHeader('Content-type', 'application/json');
-        res.write(JSON.stringify(res));
+        res.statusMessage = 'DELETE SUCCESSFUL';
+        // res.setHeader('Content-type', 'application/json');
+        res.write('');
         res.end();
       })
       .catch(err => serverError(res, err));

@@ -35,7 +35,7 @@ storage.get = id => {
   });
 };
 
-storage.delete = id => {
+storage.delete = (res, id) => {
   return new Promise((resolve, reject) => {
     if (!id) {reject('ERROR: no id provided in data');
     }
@@ -44,9 +44,7 @@ storage.delete = id => {
 
     fs.unlink(file, (err) => {
       if (err) reject(err);
-      let msg = JSON.stringify({'message': `resource: resource has been deleted`});
-      console.log(msg);
-      resolve(msg);
+      resolve(res);
     });
   });
 };
