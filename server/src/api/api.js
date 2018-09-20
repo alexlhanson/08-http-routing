@@ -45,12 +45,17 @@ router.get('/api/v1/notes/:id', (req, res) => {
       .then(data => sendJSON(res, data))
       .catch(err => serverError(res, err));
   }
-
 });
 
-// router.put('/api/v1/notes', (req, res) => {
-//   // do stuff
-// });
+router.put('/api/v1/notes/:id', (req, res) => {
+  if (!req.query.id) {
+    res.statusCode = '404';
+    res.write(`TypeError: cannot update resource of blank id`);
+    res.end();
+  } else {
+    sendJSON(res, req.body);
+  }  
+});
 
 router.delete('/api/v1/notes/:id', (req, res) => {
 
