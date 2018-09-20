@@ -16,7 +16,7 @@ let serverError = (res, err) => {
   res.statusCode = 500;
   res.statusMessage = 'Server Error';
   res.setHeader('Content-Type', 'application/json');
-  res.wrote(JSON.stringify(error));
+  res.write(JSON.stringify(error));
   res.end();
 };
 

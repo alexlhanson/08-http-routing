@@ -17,7 +17,6 @@ storage.save = data => {
   return new Promise((resolve, reject) => {
     if (data.id){
       database[data.id] = data;
-      console.info(database);
       resolve(database[data.id]);
     } else {
       reject ('Error: no unique identifier on data');
