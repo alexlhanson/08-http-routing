@@ -20,7 +20,6 @@ class Notes {
   }
 
   static delete(res, id){
-    console.log(id);
     return storage.delete(res, id);
   }
 

@@ -18,14 +18,9 @@ methods.forEach(method => {
 });
 
 router.route = (req, res) => {
-  console.log('hi');
   return parser(req)
     .then(req => {
       let handler = router.routes[req.method][req.parsed.pathname];
-      console.log('handling it');
-      console.info(req.parsed.pathname);
-      console.info(req.method);
-
       if(handler){
         return handler(req, res);
       }else{
@@ -36,7 +31,6 @@ router.route = (req, res) => {
       }
     })
     .catch(err => {
-      console.error(err);
       res.statusCode = 500;
       res.statusMessage = 'Error: internal service error';
       res.write('Internal service error', req.parsed.pathname);
