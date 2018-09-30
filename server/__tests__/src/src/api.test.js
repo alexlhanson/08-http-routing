@@ -21,17 +21,4 @@ describe('Post request API tests', () => {
       .send(req.body)
       .expect(200, req.body.title, done);
   });
-
-  // test('should show given a valid post request it will return a 404 status', (done) => { 
-  //   let actual = router.route(req, {});
-
-  //   request('http://localhost:3000')
-  //     .post('/api/v1/notes')
-  //     .expect(404, 'Bad Request', done);
-  // });
 });
-// test('should return matched object to id', done =>{
-//   let id = 42;
-
-//   request()
-//     .get('/notes');
