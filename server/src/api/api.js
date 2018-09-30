@@ -47,16 +47,6 @@ router.get('/api/v1/notes/:id', (req, res) => {
   }
 });
 
-router.put('/api/v1/notes/:id', (req, res) => {
-  if (!req.query.id) {
-    res.statusCode = '404';
-    res.write(`TypeError: cannot update resource of blank id`);
-    res.end();
-  } else {
-    sendJSON(res, req.body);
-  }  
-});
-
 router.delete('/api/v1/notes/:id', (req, res) => {
 
   if (!req.query.id) {
